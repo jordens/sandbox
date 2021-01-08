@@ -3,16 +3,18 @@ name: CD
 on:
   push:
     branches: [ master ]
+  pull_request:
+    branches: [ master ]
   workflow_dispatch:
 
 jobs:
   cd:
     runs-on: ubuntu-latest
-    environment: test
+    environment: hitl
     steps:
       - uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.DISPATCH_PAT }}
           event-type: hitl
-          repository: quartiq/gha-runner-test
+          repository: quartiq/hitl
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
