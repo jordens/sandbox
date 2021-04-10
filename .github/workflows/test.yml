@@ -1,0 +1,20 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+    container:
+      image: public.ecr.aws/w1f2p3l9/build:latest
+      env:
+        - FOO=1
+      ports:
+        - 80
+      volumes:
+        - test:/opt/test
+      options: --cpus 1
+    steps:
+      - run: ls -la /opt
