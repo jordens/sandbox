@@ -10,7 +10,7 @@ jobs:
     container:
       image: public.ecr.aws/w1f2p3l9/build:latest
       env:
-        - FOO=1
+        FOO: 1
       ports:
         - 80
       volumes:
